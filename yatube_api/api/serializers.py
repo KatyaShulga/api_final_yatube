@@ -74,7 +74,7 @@ class FollowSerializer(serializers.ModelSerializer):
         elif Follow.objects.filter(user=user, following=value).exists():
             raise serializers.ValidationError(
                 f'Вы уже подписаны на {value}!'
-        )
+            )
         return value
 
 
