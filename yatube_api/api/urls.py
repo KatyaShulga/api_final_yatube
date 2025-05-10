@@ -1,6 +1,5 @@
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
-from rest_framework.authtoken import views
 
 from .views import PostViewSet, CommentViewSet, GroupViewSet, FollowViewSet
 
