@@ -49,18 +49,6 @@ class FollowSerializer(serializers.ModelSerializer):
         fields = ['user', 'following']
         read_only_fields = ('user',)
 
-    def create(self, validated_data):
-        """
-        В методе создается запись в базу данных на основе получаемого
-        при POST-запросе значения поля 'following'
-        """
-        username = validated_data['following']
-        following = get_object_or_404(User, username=username)
-        return Follow.objects.create(
-            user=self.context['request'].user,
-            following=following
-        )
-
     def validate_following(self, value):
         """
         В методе проверяется и сключается возможность подписаться

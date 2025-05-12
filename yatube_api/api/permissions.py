@@ -11,6 +11,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         Безопасные методы из SAFE_METHODS разрешены для всех пользователей,
         остальные методы - только для авторов
         """
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        return obj.author == request.user
+        return (
+            True if request.method in permissions.SAFE_METHODS
+            else obj.author == request.user
+        )
